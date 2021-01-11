@@ -1,2 +1,4 @@
 .idea/
 data/
+yarn.lock
+node_modules

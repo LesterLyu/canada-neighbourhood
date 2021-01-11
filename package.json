@@ -1,6 +1,6 @@
 {
   "name": "canada-neighbourhood",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Canada neighbourhood data with crawler",
   "repository": "https://github.com/LesterLyu/canada-neighbourhood",
   "main": "index.js",

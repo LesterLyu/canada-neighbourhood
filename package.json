@@ -2,8 +2,9 @@
   "name": "canada-neighbourhood",
   "version": "1.0.0",
   "description": "Canada neighbourhood data with crawler",
+  "repository": "https://github.com/LesterLyu/canada-neighbourhood",
   "main": "index.js",
-  "author": "LesterLyu <lvds2000@gmail.com>",
+  "author": "Lester(Dishu) Lyu <lvds2000@gmail.com>",
   "license": "MIT",
   "private": false,
   "dependencies": {

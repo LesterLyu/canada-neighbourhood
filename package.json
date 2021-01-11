@@ -1,0 +1,13 @@
+{
+  "name": "canada-neighbourhood",
+  "version": "1.0.0",
+  "description": "Canada neighbourhood data with crawler",
+  "main": "index.js",
+  "author": "LesterLyu <lvds2000@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "node-fetch": "^2.6.1",
+    "node-html-parser": "^2.0.0"
+  }
+}

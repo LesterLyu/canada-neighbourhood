@@ -27,7 +27,7 @@ async function getData() {
       }
     })
   }
-  return {list, geojson, name: 'York Region'};
+  return {list, geojson, name: 'York Region', reduce: 0.14};
 }
 
 module.exports = {getData};

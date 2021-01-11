@@ -11,6 +11,7 @@
     "update": "node ./test/update.js"
   },
   "dependencies": {
+    "mapshaper": "^0.5.28",
     "node-fetch": "^2.6.1",
     "node-html-parser": "^2.0.0"
   }

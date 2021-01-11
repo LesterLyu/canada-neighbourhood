@@ -9,12 +9,17 @@ yarn add canada-neighbourhood
 
 ### Data Folder Structure
 ```text
- - 📁 AB               --- Province AB
-   - Edmonton.geojson  --- Geojson
-   - Edmonton.json     --- A list of neighbourhood names and unique code
- - 📁 BC
- - 📁 ON
- - 📁 QC
+ - original             --- Original GeoJson
+   - 📁 AB               --- Province AB
+     - Edmonton.geojson  --- Geojson
+     - Edmonton.json     --- A list of neighbourhood names and unique code
+   - 📁 BC
+   - 📁 ON
+   - 📁 QC
+ - reduced             --- reduced GeoJson
+   - 📁 AB 
+   - 📁 BC
+   - ...
  - data.json           --- e.g. {"ON":{"Hamilton":["Ainslie Wood","Ainslie Wood East", ...]}}
  - metadata.json       --- e.g. {"AB": ["Edmonton"], "ON": ["Toronto", ...]}
 ```

@@ -33,7 +33,7 @@ async function getData() {
       }
     })
   }
-  return {name: 'Toronto', list: store, geojson};
+  return {name: 'Toronto', list: store, geojson, reduce: 0.3};
 }
 
 module.exports = {getData};

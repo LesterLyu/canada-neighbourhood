@@ -26,7 +26,7 @@ async function getData() {
       }
     })
   }
-  return {name: 'Mississauga', list: store, geojson};
+  return {name: 'Mississauga', list: store, geojson, reduce: 0.25};
 }
 
 module.exports = {getData};

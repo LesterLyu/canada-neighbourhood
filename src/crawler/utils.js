@@ -7,6 +7,9 @@ const getJson = async (url) => {
 }
 
 const writeJson = async (json, path) => {
+  // mkdir if not exists
+  await fs.mkdir(path.slice(0, path.lastIndexOf('/')), {recursive: true});
+
   if (Array.isArray(json))
     json = json.sort((a, b) => a.code - b.code);
   try {

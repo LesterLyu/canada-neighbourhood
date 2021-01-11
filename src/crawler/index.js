@@ -4,8 +4,20 @@ const BC = require('./BC');
 const QC = require('./QC');
 const AB = require('./AB');
 const fs = require('fs');
+const {runCommands} = require('mapshaper');
 
 const dataFolderPath = `${__dirname}/../../data`;
+
+/**
+ * Use mapshaper to reduce geojson size.
+ * @return {Promise<void>}
+ */
+async function writeReducedGeoJson(province, region, targetPercentage = 1) {
+  const filePath = `${dataFolderPath}/original/${province}/${region}.geojson`;
+  const targetFolder = `${dataFolderPath}/reduced/${province}`;
+  fs.mkdirSync(targetFolder, {recursive: true});
+  await runCommands(`"${filePath}" -simplify dp ${targetPercentage} keep-shapes -o "${targetFolder}" extension=geojson`);
+}
 
 /**
  * Update and copy the neighbourhood data to a given path.
@@ -21,23 +33,15 @@ async function run(path, print = false) {
   const neighbourhoods = {};
 
   const paths = path ? [dataFolderPath, path] : [dataFolderPath];
-  for (const path of paths)
-    if (!fs.existsSync(path)) {
-      fs.mkdirSync(path);
-    }
 
   for (const [province, regions] of Object.entries(provinces)) {
-    for (const path of paths)
-      if (!fs.existsSync(`${path}/${province}`)) {
-        fs.mkdirSync(`${path}/${province}`);
-      }
     for (const [region, {getData}] of Object.entries(regions)) {
       print && console.log(`canada-neighbourhood: Getting data for ${region}, ${province}...`);
       try {
         let data = await getData();
         if (!Array.isArray(data)) data = [data];
 
-        for (let {name, list, geojson} of data) {
+        for (let {name, list, geojson, reduce} of data) {
 
           // If name is not provided, use the region's name
           if (!name) name = region;
@@ -47,8 +51,9 @@ async function run(path, print = false) {
             console.error(`canada-neighbourhood: Malformed result at ${name}, ${province}!`);
           else {
             for (const path of paths) {
-              await writeJson(list, `${path}/${province}/${name}.json`);
-              await writeJson(geojson, `${path}/${province}/${name}.geojson`);
+              await writeJson(list, `${path}/original/${province}/${name}.json`);
+              await writeJson(geojson, `${path}/original/${province}/${name}.geojson`);
+              await writeReducedGeoJson(province, name, reduce);
             }
 
             if (!metadata[province]) metadata[province] = [];

@@ -60,7 +60,7 @@ async function getData() {
       }
     })
   }
-  return {name: 'Montreal', list: store, geojson};
+  return {name: 'Montreal', list: store, geojson, reduce: 0.45};
 }
 
 module.exports = {getData};

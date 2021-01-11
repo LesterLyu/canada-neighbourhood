@@ -5,7 +5,7 @@ const QC = require('./QC');
 const AB = require('./AB');
 const fs = require('fs');
 
-const dataFolderPath = `${__dirname}/../data`;
+const dataFolderPath = `${__dirname}/../../data`;
 
 const provinces = {ON, BC, QC, AB};
 const metadata = {};
@@ -14,7 +14,7 @@ const neighbourhoods = {};
 /**
  * Update and copy the neighbourhood data to a given path.
  * @function
- * @param {string} path - data folder path
+ * @param {string} [path] - data folder path
  * @param {boolean} [print=false] - enable console log
  * @return {Promise.<void>}
  */

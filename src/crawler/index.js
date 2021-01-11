@@ -7,10 +7,6 @@ const fs = require('fs');
 
 const dataFolderPath = `${__dirname}/../../data`;
 
-const provinces = {ON, BC, QC, AB};
-const metadata = {};
-const neighbourhoods = {};
-
 /**
  * Update and copy the neighbourhood data to a given path.
  * @function
@@ -19,6 +15,11 @@ const neighbourhoods = {};
  * @return {Promise.<void>}
  */
 async function run(path, print = false) {
+
+  const provinces = {ON, BC, QC, AB};
+  const metadata = {};
+  const neighbourhoods = {};
+
   const paths = path ? [dataFolderPath, path] : [dataFolderPath];
   for (const path of paths)
     if (!fs.existsSync(path)) {
